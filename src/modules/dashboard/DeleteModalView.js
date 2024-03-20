@@ -1,13 +1,19 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, ToastAndroid, View } from 'react-native'
 import styles from './Style'
 import Space from '../../components/Space'
 import Button from '../../components/Button'
+import { useDispatch } from 'react-redux'
+import { deleteTodo } from '../../storage/redux/slices/todoSlice'
 
-const DeleteModalView = ({ setDeleteModalVisible }) => {
+const DeleteModalView = ({ setDeleteModalVisible, selectedDataForDelete }) => {
+
+    const dispatch = useDispatch();
 
     const handleDelete = () => {
-        console.log("inside the handle delete fun");
+        dispatch(deleteTodo(selectedDataForDelete));
+        setDeleteModalVisible(false);
+        ToastAndroid.show("Record deleted successfully!", ToastAndroid.SHORT);
     }
 
     return (

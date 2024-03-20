@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, TextInput } from 'react-native'
 import { COLORS } from '../assets/colors/colors';
 
-const Input = ({ placeholderText, keyType, onChange, height, isMultiline }) => {
+const Input = ({ placeholderText, keyType, onChange, height, isMultiline, value }) => {
 
     const [isFocused, setIsFocused] = React.useState(false);
 
@@ -12,6 +12,7 @@ const Input = ({ placeholderText, keyType, onChange, height, isMultiline }) => {
 
     return (
         <TextInput
+            value={value}
             placeholder={placeholderText}
             multiline={isMultiline ? true : false}
             placeholderTextColor={isFocused ? COLORS.OrangeBackground : COLORS.WhiteSmokeBackground}
@@ -33,7 +34,8 @@ Input.defaultProps = {
     keyType: 'default',
     onChange: () => { },
     height: 40,
-    isMultiline: false
+    isMultiline: false,
+    value: ""
 }
 
 const styles = StyleSheet.create({

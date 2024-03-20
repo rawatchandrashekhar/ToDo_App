@@ -8,7 +8,7 @@ import ET from "react-native-vector-icons/Entypo"
 import FE from "react-native-vector-icons/Feather"
 import styles from './Style'
 
-const Card = ({ setDeleteModalVisible = () => { }, setEditModalVisible = () => { } }) => {
+const Card = ({ setDeleteModalVisible = () => { }, setEditModalVisible = () => { }, item, setSelectedDataForDelete, setSelectedDataForUpdate }) => {
 
     const [show, setShow] = useState(false);
 
@@ -20,8 +20,9 @@ const Card = ({ setDeleteModalVisible = () => { }, setEditModalVisible = () => {
         <View style={styles.cardRoot}>
             <View style={styles.cardContainer}>
                 <View style={styles.cardSubContainer}>
-                    <Text numberOfLines={1} style={styles.cardTitleStyle}>Task Titleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</Text>
-                    <Text numberOfLines={1} style={styles.cardAboutStyle}>Task body about this taskkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</Text>
+                    <Text numberOfLines={1} style={styles.cardTitleStyle}>{item?.title}</Text>
+                    <Space mV={1} />
+                    <Text numberOfLines={1} style={styles.cardAboutStyle}>{item?.about}</Text>
                 </View>
                 <View style={styles.cardSubContainerTwo}>
                     <Button
@@ -34,7 +35,7 @@ const Card = ({ setDeleteModalVisible = () => { }, setEditModalVisible = () => {
             </View>
             {show ? <View style={styles.cardShowButtonContainer}>
                 <Button
-                    onPress={() => setDeleteModalVisible(true)}
+                    onPress={() => { setSelectedDataForDelete(item); setDeleteModalVisible(true) }}
                     btnWidth={40}
                     borderWidth={1}
                     paddingVertical={3}
@@ -42,7 +43,7 @@ const Card = ({ setDeleteModalVisible = () => { }, setEditModalVisible = () => {
                 />
                 <Space mH={5} />
                 <Button
-                    onPress={() => setEditModalVisible(true)}
+                    onPress={() => { setSelectedDataForUpdate(item); setEditModalVisible(true) }}
                     btnWidth={40}
                     borderWidth={1}
                     paddingVertical={3}
