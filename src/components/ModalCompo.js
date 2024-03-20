@@ -13,7 +13,7 @@ const ModalCompo = ({ bottomStyle, content, modalVisible, setModalVisible }) => 
                 onRequestClose={() => {
                     setModalVisible(!modalVisible);
                 }}>
-                <View style={{ ...styles.centeredView, ...bottomStyle }}>
+                <View style={{ ...styles.centeredView, ...bottomStyle, backgroundColor: 'rgba(0,0,0,0.7)' }}>
                     {content}
                 </View>
             </Modal>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         // marginTop: 22,
-        backgroundColor: 'rgba(0,0,0,0.7)'
+        // backgroundColor: 'rgba(0,0,0,0.7)'
     },
     modalView: {
         borderTopWidth: 3,
